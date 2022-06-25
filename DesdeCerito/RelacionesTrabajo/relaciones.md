@@ -257,7 +257,7 @@ CREATE TABLE ruta(
 
 ```sql
 CREATE TABLE gremio(
-	nombre_gremio VARCHAR(30) PRIMARY KEY.
+	nombre_gremio VARCHAR(30) PRIMARY KEY,
 	ced_presidente_gremio NUMBER(15) UNIQUE NOT NULL,
 	telefono_del_gremio NUMBER(10) UNIQUE NOT NULL,
 );

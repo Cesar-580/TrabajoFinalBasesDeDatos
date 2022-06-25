@@ -1,4 +1,4 @@
 CREATE TABLE gremio(
-	nombre VARCHAR(40) NOT NULL PRIMARY KEY,
-	ced_presidente INT(12) UNSIGNED NOT NULL,
-	telefono int(12) UNSIGNED NOT NULL)ENGINE = InnoDB;
+	nombre_gremio VARCHAR(40) NOT NULL PRIMARY KEY,
+	ced_presidente_gremio INT(12) UNSIGNED UNIQUE NOT NULL,
+	telefono_del_gremio int(12) UNSIGNED UNIQUE NOT NULL)ENGINE = InnoDB;

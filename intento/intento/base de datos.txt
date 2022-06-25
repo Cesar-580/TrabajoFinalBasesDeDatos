@@ -1,0 +1,4 @@
+CREATE TABLE gremio(
+	nombre VARCHAR(40) NOT NULL PRIMARY KEY,
+	ced_presidente INT(12) UNSIGNED NOT NULL,
+	telefono int(12) UNSIGNED NOT NULL)ENGINE = InnoDB;

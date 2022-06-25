@@ -42,7 +42,6 @@ CREATE TABLE despachador(
 			 segundo_nombre VARCHAR(10),
 			 primer_apellido VARCHAR(10) NOT NULL,
 			 segundo_apellido VARCHAR(10),NUMBER
-			 fecha_nacimiento DATE,
     		 edad NUMBER(2) NOT NULL 
                 CHECK(edad>18),
 			 telfono_celular NUMBER(10) UNIQUE NOT NULL
@@ -111,7 +110,7 @@ CREATE TABLE chofer(
 	segundo_nombre VARCHAR(10),
 	primer_apellido VARCHAR(10) NOT NULL,
 	segundo_apellido VARCHAR(10),
-
+	fecha_de_naciemiento DATE NOT NULL,
 	fecha_expiracion_pase DATE NOT NULL,
 	telfono_celular NUMBER(10) UNIQUE NOT NULL,
     tipo_sangre VARCHAR(3) NOT NULL 

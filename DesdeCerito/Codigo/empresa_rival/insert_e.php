@@ -7,6 +7,12 @@ require('../conexion/conexion.php');
 echo $_POST['gre_aso'];
 echo "<br>";
 
+if ($_POST['gre_aso'] != "Ninguno"){
+    $gre_aso = $_POST['gre_aso'] ;
+}else{
+    $gre_aso = NULL;
+}
+
 $query="INSERT INTO `empresa`(
     `NIT`,
     `nombre`,
@@ -14,10 +20,10 @@ $query="INSERT INTO `empresa`(
     `id_gremio`
     )
 VALUES (
-    '$_POST[nit]',
+    '$_POST[nit]',  
     '$_POST[nombre_emp]',
     '$_POST[valo_bit]',
-    '$_POST[gre_aso]'
+    " . (isset($gre_aso) ? "'$gre_aso'" : "NULL") . "
     )";
 
 

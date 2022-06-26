@@ -33,6 +33,18 @@ if ($_POST['p_taxi'] != ""){
 }
 
 
+if ($_POST['gre_aso'] != ""){
+    $gre_aso = $_POST['gre_aso'] ;
+}else{
+    $gre_aso = NULL;
+}
+
+if ($_POST['empre_r'] != ""){
+    $empre_r = $_POST['empre_r'] ;
+}else{
+    $empre_r = NULL;
+}
+
 // $gre_aso = $_POST[gre_aso];
 // $empre_r = $_POST[empre_r];
 
@@ -66,8 +78,8 @@ VALUES (
     $_POST[salario],
     " . (isset($p_bus) ? "'$p_bus'" : "NULL") . ",
     " . (isset($p_taxi) ? "'$p_taxi'" : "NULL") . ",
-    '$_POST[gre_aso]',
-    $_POST[empre_r]
+    " . (isset($gre_aso) ? "'$gre_aso'" : "NULL") . ",
+    " . (isset($empre_r) ? "'$empre_r'" : "NULL") . "
     )";
 
 

@@ -15,6 +15,7 @@
         <a href="../chofer/chofer.php">Chofer</a>
         <a href="../empresa_rival/empresa.php">Empresa rival</a>
         <a href="../gremio/gremio.php">Gremio</a>
+        <a href="../busquedas/busquedas.php">Busquedas</a>
     </section>
     
     <!-- Mostrar las tuplas creadas en Chofer -->
@@ -51,11 +52,16 @@
                         <button title="eliminar" type="submit">X</button>
                     </form>
                 </td>
+                
+                <!-- Actualizar -->
 
                 <td>
-                    <form action="empresa.php" method="GET">
+                    <form action="gremio.php" method="GET">
+                    <input type="text" name="nombre_gre" value=<?=$tupla_gremio['nombre_gremio'];?> >
+                    <input type="text" name="ced_presi" value=<?=$tupla_gremio['ced_presidente_gremio'];?> >
+                    <input type="text" name="telf_pre" value=<?=$tupla_gremio['telefono_del_gremio'];?> >
 
-                        <button title="editar" type="submit">E</button>
+                    <button title="editar" type="submit">E</button>
                     </form>
                 </td>
             </tr>
@@ -67,10 +73,33 @@
         </tbody>
     </table>
 
+    <?php
+        if(isset($_GET['nombre_gre'])){
+    ?>
+    <form action="update_g.php"method="POST">
+     
+     <label>Nombre gremio</label>
+     <input type="text" readonly name="nombre_gre" value=<?=$_GET['nombre_gre']?> >
+ 
+     <label>Cedula del presidente del gremio</label>
+     <input type="text" name="ced_presi" value=<?=$_GET['ced_presi']?> >
+ 
+     <label>Telefono del gremio</label>
+     <input type="text" name="telf_pre" value=<?=$_GET['telf_pre']?> >
+ 
+     <input type="submit" class="btn btn-primary" value="Actualizar">
+     <a href="gremio.php" class="btn btn-success">Reiniciar</a>
+ 
+     </form>
+
+
+    <?php
+        }else{
+    ?>
 
     <!-- Inserción de elementos -->
 
-    <form action="insert_g.php"method="post">
+    <form action="insert_g.php"method="POST">
      
     <label>Nombre gremio</label>
     <input type="text" name="nombre_gre" id="nombre_gre" >
@@ -85,7 +114,9 @@
     <a href="chofer.php" class="btn btn-success">Reiniciar</a>
 
     </form>
-
+    <?php
+}
+    ?>
 
 </body>
 </html>

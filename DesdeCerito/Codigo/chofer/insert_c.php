@@ -17,20 +17,7 @@ require('../conexion/conexion.php');
 // $t_sangre = $_POST[t_sangre];
 // $salario = $_POST[salario];
 
-if ($_POST['p_bus'] != ""){
-    echo "Exito B <br>";
-    $p_bus = $_POST['p_bus'] ;
-    echo $p_bus;
-}else{
-    $p_bus = NULL;
-}
 
-if ($_POST['p_taxi'] != ""){
-    echo "Exito T <br>";
-    $p_taxi = $_POST['p_taxi'] ;
-}else{
-    $p_taxi = NULL;
-}
 
 
 if ($_POST['gre_aso'] != ""){
@@ -60,8 +47,6 @@ $query="INSERT INTO `chofer`(
     `fecha_expiracion_pase`,
     `telfono_celular`,
     `tipo_sangre`,`salario`,
-    `placa_bus`,
-    `placa_taxi`,
     `id_gremio`,
     `id_empresa_rival`
     )
@@ -76,8 +61,6 @@ VALUES (
     $_POST[tel],
     '$_POST[t_sangre]',
     $_POST[salario],
-    " . (isset($p_bus) ? "'$p_bus'" : "NULL") . ",
-    " . (isset($p_taxi) ? "'$p_taxi'" : "NULL") . ",
     " . (isset($gre_aso) ? "'$gre_aso'" : "NULL") . ",
     " . (isset($empre_r) ? "'$empre_r'" : "NULL") . "
     )";

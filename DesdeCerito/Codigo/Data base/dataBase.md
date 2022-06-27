@@ -19,18 +19,9 @@ CREATE TABLE chofer(
 	
 	salario INT(4) NOT NULL
 		CHECK(salario > 0),
-     
-	placa_bus VARCHAR(7) bus,
-    placa_taxi VARCHAR(7) taxi,
-
-        CHECK(
-        (placa_bus IS NULL and placa_taxi IS NOT NULL) 
-        OR
-        (placa_bus IS NOT NULL and placa_taxi IS NULL )
-        ),
 	
 	id_gremio VARCHAR(30) REFERENCES gremio(nombre_gremio) ON DELETE CASCADE,
-	id_empresa_rival INT(30) REFERENCES empresa_rival(NIT) ON DELETE CASCADE,
+	id_empresa_rival INT(30) REFERENCES empresa_rival(NIT) ON DELETE CASCADE
     )ENGINE = InnoDB;
 ```
 
@@ -38,16 +29,16 @@ CREATE TABLE chofer(
 
 ```sql
 INSERT INTO `chofer`
-(`numero_identificacion`,`primer_nombre`,`segundo_nombre`,`primer_apellido`,`segundo_apellido`,`fecha_de_naciemiento`,`fecha_expiracion_pase`,`telfono_celular`,`tipo_sangre`,`salario`,`placa_bus`,`placa_taxi`,`id_gremio`,`id_empresa_rival`) 
-VALUES(1010112181,'Cesar','','Ospina','','2000-01-21','2026-05-19','2894825','O+','1000000','FCL-801',NULL,'LosCimbichi','9657845');
+(`numero_identificacion`,`primer_nombre`,`segundo_nombre`,`primer_apellido`,`segundo_apellido`,`fecha_de_naciemiento`,`fecha_expiracion_pase`,`telfono_celular`,`tipo_sangre`,`salario`,`id_gremio`,`id_empresa_rival`) 
+VALUES(1010112181,'Cesar','','Ospina','','2000-01-21','2026-05-19','2894825','O+','1000000','LosCimbichi','9657845');
 
 INSERT INTO `chofer`
-(`numero_identificacion`,`primer_nombre`,`segundo_nombre`,`primer_apellido`,`segundo_apellido`,`fecha_de_naciemiento`,`fecha_expiracion_pase`,`telfono_celular`,`tipo_sangre`,`salario`,`placa_bus`,`placa_taxi`,`id_gremio`,`id_empresa_rival`) 
-VALUES(73897598,'Ronald','','McDonald','','1987-08-14','2026-07-22','5705215','A-','1200000','KJK-528',NULL,'LosCimbichi','3691478');
+(`numero_identificacion`,`primer_nombre`,`segundo_nombre`,`primer_apellido`,`segundo_apellido`,`fecha_de_naciemiento`,`fecha_expiracion_pase`,`telfono_celular`,`tipo_sangre`,`salario`,`id_gremio`,`id_empresa_rival`) 
+VALUES(73897598,'Ronald','','McDonald','','1987-08-14','2026-07-22','5705215','A-','1200000','LosCimbichi','3691478');
 
 INSERT INTO `chofer`
-(`numero_identificacion`,`primer_nombre`,`segundo_nombre`,`primer_apellido`,`segundo_apellido`,`fecha_de_naciemiento`,`fecha_expiracion_pase`,`telfono_celular`,`tipo_sangre`,`salario`,`placa_bus`,`placa_taxi`,`id_gremio`,`id_empresa_rival`) 
-VALUES(58978102,'Walter','Hartwell','White','Heisenberg','1967-12-24','2026-07-22','2992789','O-','1150000',NULL,'KIZ-599','Los Pollos','5236987');
+(`numero_identificacion`,`primer_nombre`,`segundo_nombre`,`primer_apellido`,`segundo_apellido`,`fecha_de_naciemiento`,`fecha_expiracion_pase`,`telfono_celular`,`tipo_sangre`,`salario`,`id_gremio`,`id_empresa_rival`) 
+VALUES(58978102,'Walter','Hartwell','White','Heisenberg','1967-12-24','2026-07-22','2992789','O-','1150000','LosPollos','5236987');
 
 ```
 

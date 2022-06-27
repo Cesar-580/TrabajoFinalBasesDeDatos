@@ -12,9 +12,9 @@ los gremios que cumple todas las siguientes condiciones:
 ```
 
 ```sql
-SELECT nombre_gremio, ced_presidente_gremio FROM curso 
+SELECT nombre_gremio, ced_presidente_gremio FROM gremio 
 WHERE 
-      cantidad_estudiantes > (SELECT capacidad
+      chofer.empresa > (SELECT capacidad
                       FROM administrador 
                       WHERE administrador.nombre_usuario = curso.admin_supervisa
                     )

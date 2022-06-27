@@ -18,23 +18,6 @@ require('../conexion/conexion.php');
 // $t_sangre = $_GET[t_sangre];
 // $salario = $_GET[salario];
 
-if ($_POST['p_bus'] != ""){
-    // echo "Exito B <br>";
-    $p_bus = $_POST['p_bus'] ;
-    // echo $p_bus;
-}else{
-    $p_bus = NULL;
-}
-
-if ($_POST['p_taxi'] != ""){
-    // echo "Exito T <br>";
-    $p_taxi = $_POST['p_taxi'] ;
-}else{
-    $p_taxi = NULL;
-}
-
-echo $p_bus."-BUS<br>";
-echo $p_taxi."-TAXI<br>";
 
 
 // $gre_aso = $_GET[gre_aso];
@@ -72,19 +55,7 @@ $query = "UPDATE `chofer` SET
 WHERE numero_identificacion='$_POST[n_id]'
 ";
 
-echo 'TODO BONIT';
 
-if( ($_POST['p_bus'] == "" && $_POST['p_taxi'] != "") || ($_POST['p_bus'] != "" AND $_POST['p_taxi'] == ""))
-{   
-    if($_POST['p_bus'] == ""){
-        $query2 = "UPDATE chofer SET placa_bus = NULL, placa_taxi = '$_POST[p_taxi]' WHERE numero_identificacion='$_POST[n_id]'";
-    }
-    if($_POST['p_taxi'] == ""){
-        $query2 = "UPDATE chofer SET placa_bus ='$_POST[p_bus]',placa_taxi = NULL WHERE numero_identificacion='$_POST[n_id]'"; 
-    }
-}else{
-    header ("Location: chofer.php?error");
-}
 echo '<br>TODO BONIT q3';
 if($_POST['empre_r'] == ""){
     $query3 = "UPDATE chofer SET id_empresa_rival = NULL WHERE numero_identificacion='$_POST[n_id]'"; 
@@ -103,7 +74,7 @@ echo '<br>TODO BONITo FIN<br>';
 
 $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
 echo '<br>TODO BONITo Result <br>';
-$result2 = mysqli_query($conn, $query2) or die(mysqli_error($conn));
+
 
 $result3 = mysqli_query($conn, $query3) or die(mysqli_error($conn));
 

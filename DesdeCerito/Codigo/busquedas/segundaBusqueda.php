@@ -37,11 +37,56 @@
                 </ul>
             </div>
         </nav>
-    </section>  
+    </section>
 
+
+
+<?php
+// Llamado de la conexión de la BD
+require('../conexion/conexion.php');
+
+// echo $_POST['n'].'<br>';
+// echo gettype($_POST['n2']).'<br>';
+
+$NMiC = $_POST['NMiC'];
+$NMaC = $_POST['NMaC'];
+
+if($NMiC > 0){
+    $queryB2 = "SELECT DISTINCT NIT,nombre
+    FROM empresa,chofer
+    WHERE 
+    chofer.id_empresa_rival = NIT
+    GROUP BY chofer.id_empresa_rival
+    HAVING COUNT(*) >= $NMiC AND COUNT(*) <= $NMaC ;
+    ";
+}else{
+    $queryB2 = "SELECT DISTINCT NIT,nombre FROM empresa 
+    WHERE NIT NOT IN ( 
+    SELECT chofer.id_empresa_rival FROM chofer 
+    GROUP BY chofer.id_empresa_rival 
+    HAVING COUNT(*) > $NMaC)";
+}
+
+
+// $queryB1 = "SELECT nombre_gremio,telefono_del_gremio
+// FROM gremio";
+
+$result_b2 = mysqli_query($conn, $queryB2) or die(mysqli_error($conn));
+
+// $query="SELECT * FROM gremio";
+// $resultB1 = mysqli_query($conn, $query) or 
+// die(mysqli_error($conn));
+
+
+mysqli_close($conn);
+
+?>
 <br>
+
+<!-- Consultas :D -->
+
 <!-- Busquedas -->
-    <div class="container">   
+<div class="container">   
         <div class="card-deck mt-3">
             <div class="card text-center border-info">
                 <div class="card-body">
@@ -67,7 +112,6 @@
                     </form>
                 </div>
             </div>
-
 
             <div class="card text-center border-info">
                 <div class="card-body">
@@ -195,13 +239,43 @@
                             <?php
                         }
                         ?>
+                <!-- Respuesta Busqueda 2 -->
+                <br>
 
+
+                <table class="table border-rounded">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">NIT de la empresa</th>
+                            <th scope="col">Nombre de la empresa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        // Se pregunta si hay una respuesta dicha consulta
+                        if($result_b2){
+                            // Se itera por cada una de las tuplas (filas) del resultado de la consulta
+                            foreach($result_b2 as $busqueda2){                         
+                        ?>
+                        <tr>
+                            <td><?=$busqueda2['NIT'];?></td>
+                            <td><?=$busqueda2['nombre'];?></td>
+                        </tr>
+                        <?php
+                                }
+                            }
+                        ?>
+                    </tbody>
+                    </table>
 
                 </div>
             </div>
         </div>
     </div>
-    
 
-    </body>
+
+
+        
+
+        </body>
 </html>

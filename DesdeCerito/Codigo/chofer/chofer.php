@@ -45,7 +45,6 @@
 <br>
     
     <div class="col-6 px-2">
-    
     <table class="table border-rounded">
         <thead class="thead-dark">
             <tr>
@@ -184,6 +183,9 @@
 
 
 
+
+
+    
 
     <!-- Inserción de elementos -->
     <!-- Update -->

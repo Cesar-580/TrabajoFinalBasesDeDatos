@@ -63,15 +63,26 @@ $num = $_POST['n'];
 // HAVING COUNT(*) = 2;
 // ";
 
-$queryB1 = "SELECT DISTINCT nombre_gremio,telefono_del_gremio
-FROM gremio, chofer
-WHERE chofer.id_gremio = gremio.nombre_gremio 
-AND chofer.fecha_de_naciemiento >= '$fecha1'
-AND chofer.fecha_de_naciemiento <= '$fecha2'
-GROUP BY chofer.id_gremio
-HAVING COUNT(*) = $num;
+if($num > 0){
+    $queryB1 = "SELECT DISTINCT nombre_gremio,telefono_del_gremio
+    FROM gremio, chofer
+    WHERE chofer.id_gremio = gremio.nombre_gremio 
+    AND chofer.fecha_de_naciemiento >= '$fecha1'
+    AND chofer.fecha_de_naciemiento <= '$fecha2'
+    GROUP BY chofer.id_gremio
+    HAVING COUNT(*) = $num;
 ";
-
+}else{
+    $queryB1 = "SELECT DISTINCT nombre_gremio,telefono_del_gremio 
+    FROM gremio, chofer 
+    WHERE chofer.id_gremio = gremio.nombre_gremio 
+    AND gremio.nombre_gremio NOT IN ( 
+        SELECT chofer.id_gremio FROM chofer 
+        WHERE chofer.fecha_de_naciemiento >= '2000-01-01' 
+        AND chofer.fecha_de_naciemiento <= '2022-06-27' 
+        GROUP BY chofer.id_gremio 
+        HAVING COUNT(*) > 0 );";        
+}
 // $queryB1 = "SELECT nombre_gremio,telefono_del_gremio
 // FROM gremio";
 
@@ -120,21 +131,15 @@ mysqli_close($conn);
             <div class="card text-center border-info">
                 <div class="card-body">
                     <center><h3>Segunda busqueda</h3></center>
-                    <form action="primeraBusqueda.php" method="POST">
+                    <form action="segundaBusqueda.php" method="POST">
                         <div class="form-group">
-                            <label for="">Número de choferes a consultar</label>
-                            <input type="number" class="form-control" name="n">
+                            <label for="">Número mínimo de choferes</label>
+                            <input type="number" class="form-control" name="NMiC">
                         </div>
                         <div class="form-group">
-                            <label for="">Fecha de nacimiento inicial (f1)</label>
-                            <input type="date" name="n2">
+                            <label for="">Número máximo de choferes</label>
+                            <input type="number" class="form-control" name="NMaC">
                         </div>
-
-                        <div class="form-group">
-                            <label for="">Fecha de nacimiento final (f2)</label>
-                            <input type="date" name="n3">
-                        </div>
-
                         <div class="form-group">
                             <input type="submit" value="Guardar">
                         </div>

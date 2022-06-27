@@ -18,5 +18,6 @@ empresa.id_gremio = chofer.id_gremio
 $resultC2 = mysqli_query($conn, $query2) or die(mysqli_error($conn));
 
 
+
 mysqli_close($conn);
 ?>

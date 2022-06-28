@@ -67,6 +67,7 @@ if($num > 0){
     $queryB1 = "SELECT DISTINCT nombre_gremio,telefono_del_gremio
     FROM gremio, chofer
     WHERE chofer.id_gremio = gremio.nombre_gremio 
+    AND chofer.id_gremio IS NOT NULL
     AND chofer.fecha_de_naciemiento >= '$fecha1'
     AND chofer.fecha_de_naciemiento <= '$fecha2'
     GROUP BY chofer.id_gremio
@@ -74,15 +75,38 @@ if($num > 0){
 ";
 }else{
     $queryB1 = "SELECT DISTINCT nombre_gremio,telefono_del_gremio 
-    FROM gremio, chofer 
-    WHERE chofer.id_gremio = gremio.nombre_gremio 
-    AND gremio.nombre_gremio NOT IN ( 
+    FROM gremio
+    WHERE gremio.nombre_gremio NOT IN ( 
         SELECT chofer.id_gremio FROM chofer 
-        WHERE chofer.fecha_de_naciemiento >= '2000-01-01' 
-        AND chofer.fecha_de_naciemiento <= '2022-06-27' 
+        WHERE chofer.fecha_de_naciemiento >= '$fecha1'
+        AND chofer.id_gremio IS NOT NULL
+        AND chofer.fecha_de_naciemiento <= '$fecha2' 
         GROUP BY chofer.id_gremio 
         HAVING COUNT(*) > 0 );";        
 }
+
+// if($num > 0){
+//     $queryB1 = "SELECT DISTINCT nombre_gremio,telefono_del_gremio
+//     FROM gremio, chofer
+//     WHERE chofer.id_gremio = gremio.nombre_gremio 
+//     AND chofer.id_gremio IS NOT NULL
+//     AND chofer.fecha_de_naciemiento >= '$fecha1'
+//     AND chofer.fecha_de_naciemiento <= '$fecha2'
+//     GROUP BY chofer.id_gremio
+//     HAVING COUNT(*) = $num;
+// ";
+// }else{
+//     $queryB1 = "SELECT DISTINCT nombre_gremio,telefono_del_gremio 
+//     FROM gremio, chofer 
+//     WHERE chofer.id_gremio = gremio.nombre_gremio 
+//     AND gremio.nombre_gremio NOT IN ( 
+//         SELECT chofer.id_gremio FROM chofer 
+//         WHERE chofer.fecha_de_naciemiento >= '2000-01-01'
+//         AND chofer.id_gremio IS NOT NULL
+//         AND chofer.fecha_de_naciemiento <= '2022-06-27' 
+//         GROUP BY chofer.id_gremio 
+//         HAVING COUNT(*) > 0 );";        
+// }
 // $queryB1 = "SELECT nombre_gremio,telefono_del_gremio
 // FROM gremio";
 

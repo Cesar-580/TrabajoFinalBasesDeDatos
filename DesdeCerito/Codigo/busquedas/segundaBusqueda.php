@@ -56,6 +56,7 @@ if($NMiC > 0){
     FROM empresa,chofer
     WHERE 
     chofer.id_empresa_rival = NIT
+    AND chofer.id_empresa_rival IS NOT NULL
     GROUP BY chofer.id_empresa_rival
     HAVING COUNT(*) >= $NMiC AND COUNT(*) <= $NMaC ;
     ";
@@ -63,6 +64,7 @@ if($NMiC > 0){
     $queryB2 = "SELECT DISTINCT NIT,nombre FROM empresa 
     WHERE NIT NOT IN ( 
     SELECT chofer.id_empresa_rival FROM chofer 
+    WHERE chofer.id_empresa_rival IS NOT NULL
     GROUP BY chofer.id_empresa_rival 
     HAVING COUNT(*) > $NMaC)";
 }

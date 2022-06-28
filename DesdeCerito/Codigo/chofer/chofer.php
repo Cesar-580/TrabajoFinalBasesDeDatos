@@ -93,7 +93,7 @@
                     <form action="delete_c.php" method="POST">
                         <input type="text" hidden name="numero_identificacion" value=<?=$tupla_resultante['numero_identificacion'];?> >
                         <button class="btn btn-danger" title="eliminar" type="submit"><i
-                                            class="fas fa-trash-alt"></i></button>
+                                            class="fas fa-trash-alt">X</i></button>
                     </form>
                 
                 

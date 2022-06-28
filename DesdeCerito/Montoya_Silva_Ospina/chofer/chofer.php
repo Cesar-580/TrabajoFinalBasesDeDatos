@@ -206,13 +206,13 @@
     Editar<br>
     <div class="form-group">
         <label for="">Numero identificacion</label>
-        <input type="text" readonly class="form-control" name="n_id" id="n_id" value=<?=$_GET["n_id"];?>>
+        <input type="text" readonly class="form-control"  required  name="n_id" id="n_id" value=<?=$_GET["n_id"];?>>
     </div>
 
         
     <div class="form-group">
         <label for="">Primer nombre</label>
-        <input type="text" class="form-control" name="p_nombre" id="p_nombre" value=<?=$_GET["p_nombre"];?>>  
+        <input type="text" class="form-control" required  name="p_nombre" id="p_nombre" value=<?=$_GET["p_nombre"];?>>  
     </div>
 
     <div class="form-group">
@@ -222,7 +222,7 @@
 
     <div class="form-group">
     <label for="">Primer apellido</label>
-    <input type="text"class="form-control"  name="p_ape" id="p_ape" value=<?=$_GET["p_ape"];?>>
+    <input type="text"class="form-control"  required  name="p_ape" id="p_ape" value=<?=$_GET["p_ape"];?>>
     </div>
     
     <div class="form-group">
@@ -232,27 +232,27 @@
     
     <div class="form-group">
     <label for="">Fecha de naciemiento</label>
-    <input type="date" ide="f_nac" name="f_nac"
+    <input type="date" ide="f_nac" name="f_nac" required 
        min="1950-01-01" max="2004-01-01"value=<?=$_GET["f_nac"];?>>
     </div>
     
        <div class="form-group">
     <label for="">Fecha expiracion del pase</label>
   
-    <input type="date" id="f_exp" name="f_exp"
+    <input type="date" id="f_exp" name="f_exp" required 
        value="2022-06-25"
        min="2022-06-25" max="2050-12-31"value=<?=$_GET["f_exp"];?>>
     </div>
     
        <div class="form-group">
     <label for="">Telfono celular</label>
-    <input type="text" class="form-control" name="tel" id="tel" value=<?=$_GET["tel"];?>>
+    <input type="text" class="form-control" required  name="tel" id="tel" value=<?=$_GET["tel"];?>>
     </div>
     
     <div class="form-group">
     <label for="">Tipo sangre</label>
     
-    <select name="t_sangre">
+    <select name="t_sangre" required >
         <option value=<?=$_GET["t_sangre"];?>><?=$_GET["t_sangre"];?></option>
         <option value="A-">A-</option>
         <option value="A+">A+</option>
@@ -267,7 +267,7 @@
     
     <div class="form-group">
     <label for="">Salario</label>
-    <input type="text" class="form-control" name="salario" id="salario" value=<?=$_GET["salario"];?>>
+    <input type="text" class="form-control"  required name="salario" id="salario" value=<?=$_GET["salario"];?>>
     </div>
     
 
@@ -341,11 +341,11 @@
                 <form action="insert_c.php" class="form-group" method="POST">
                     <div class="form-group">
                         <label for="Numero identificacion">Numero identificacion</label>
-                        <input type="text" name="n_id" id="n_id" class="form-control">
+                        <input type="text" name="n_id" id="n_id" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="">Primer nombre</label>
-                        <input type="text" name="p_nombre" id="p_nombre" class="form-control">
+                        <input type="text" name="p_nombre" id="p_nombre" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="">Segundo nombre</label>
@@ -353,7 +353,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Primer apellido</label>
-                        <input type="text" name="p_ape" id="p_ape" class="form-control">
+                        <input type="text" name="p_ape" id="p_ape" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="">Segundo apellido</label>
@@ -361,19 +361,19 @@
                     </div>
                     <div class="form-group">
                         <label for="">Fecha de naciemiento</label>
-                        <input type="date" ide="f_nac" name="f_nac" value="2000-01-20" min="1950-01-01" max="2004-01-01" class="form-control">
+                        <input type="date" ide="f_nac" name="f_nac" value="2000-01-20" min="1950-01-01" max="2004-01-01" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="">Fecha expiracion del pase</label>
-                        <input type="date" id="f_exp" name="f_exp" value="2022-06-25" min="2022-06-25" max="2050-12-31" class="form-control">
+                        <input type="date" id="f_exp" name="f_exp" value="2022-06-25" min="2022-06-25" max="2050-12-31" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="">Telfono celular</label>
-                        <input type="text" name="tel" id="tel" class="form-control">
+                        <input type="text" name="tel" id="tel" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="">Tipo sangre</label>
-                        <select name="t_sangre" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                        <select name="t_sangre" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" required>
                             <option value="A+">A+</option>
                             <option value="A-">A-</option>
                             <option value="B-">B-</option>
@@ -386,7 +386,7 @@
                     </div>
                     <div class="form-group">
                         <label for="">Salario</label>
-                        <input type="text" name="salario" id="salario" class="form-control">
+                        <input type="text" name="salario" id="salario" class="form-control" required>
                     </div>
                     
                     <div class="form-group">

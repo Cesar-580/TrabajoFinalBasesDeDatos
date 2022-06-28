@@ -85,7 +85,7 @@
                 <td>
                     <form action="gremio.php" method="GET">
                     <input type="text" hidden name="nombre_gre" value=<?=$tupla_gremio['nombre_gremio'];?> >
-                    <input type="text" hidden name="ced_presi" value=<?=$tupla_gremio['ced_presidente_gremio'];?> >
+                    <input type="number" hidden name="ced_presi" value=<?=$tupla_gremio['ced_presidente_gremio'];?> >
                     <input type="text" hidden name="telf_pre" value=<?=$tupla_gremio['telefono_del_gremio'];?> >
 
                     <button title="editar" class="btn btn-primary" type="submit">Edit</button>
@@ -114,13 +114,13 @@
     <form class="form-group" action="update_g.php"method="POST">
      
      <label for="">Nombre gremio</label>
-     <input type="text" readonly class="form-control" name="nombre_gre" value=<?=$_GET['nombre_gre']?> >
+     <input type="text" readonly required  class="form-control" name="nombre_gre" value=<?=$_GET['nombre_gre']?> >
  
      <label for="">Cedula del presidente del gremio</label>
-     <input type="text" class="form-control" name="ced_presi" value=<?=$_GET['ced_presi']?> >
+     <input type="number"  required class="form-control" name="ced_presi" value=<?=$_GET['ced_presi']?> >
  
      <label for="">Telefono del gremio</label>
-     <input type="text" class="form-control" name="telf_pre" value=<?=$_GET['telf_pre']?> >
+     <input type="text"  required class="form-control" name="telf_pre" value=<?=$_GET['telf_pre']?> >
  
      <input type="submit" class="btn btn-primary" value="Actualizar">
      <a href="gremio.php" class="btn btn-success">Reiniciar</a>
@@ -141,17 +141,17 @@
 
     <div class="form-group">
     <label for="">Nombre gremio</label>
-    <input type="text" class="form-control" name="nombre_gre" id="nombre_gre" >       
+    <input type="text" required class="form-control" name="nombre_gre" id="nombre_gre" >       
     </div>
 
     <div class="form-group">
     <label for="">Cedula del presidente del gremio</label>
-    <input type="text" class="form-control" name="ced_presi" id="ced_presi" >
+    <input type="number" required class="form-control" name="ced_presi" id="ced_presi" >
     </div>
 
     <div class="form-group">
     <label for="">Telefono del gremio</label>
-    <input type="text" class="form-control" name="telf_pre" id="telf_pre" >
+    <input type="text" required class="form-control" name="telf_pre" id="telf_pre" >
     </div>
 
     <div class="form-group">

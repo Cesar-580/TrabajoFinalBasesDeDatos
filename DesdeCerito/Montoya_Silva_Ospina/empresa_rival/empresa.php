@@ -75,7 +75,7 @@
                 <!-- Eliminación -->
                 <td>
                     <form action="delete_e.php" method="POST">
-                        <input type="text" hidden name="NIT" value=<?=$tupla_empresa['NIT'];?> >
+                        <input type="number" hidden name="NIT" value=<?=$tupla_empresa['NIT'];?> >
                         <button class="btn btn-danger" title="eliminar" type="submit">X</button>
                     </form>
                 </td>
@@ -90,9 +90,9 @@
                     </form> -->
 
                     <form action="empresa.php" method="GET">
-                    <input type="text" hidden name="NIT" value=<?=$tupla_empresa['NIT'];?> >
-                    <input type="text" hidden name="nombre" value=<?=$tupla_empresa['nombre'];?> >
-                    <input type="text" hidden name="valo_bit"  value=<?=$tupla_empresa['valor_en_bitcoins_de_la_empresa'];?> >      
+                    <input type="number" hidden  name="NIT" value=<?=$tupla_empresa['NIT'];?> >
+                    <input type="text" hidden  name="nombre" value=<?=$tupla_empresa['nombre'];?> >
+                    <input type="number" hidden  name="valo_bit"  value=<?=$tupla_empresa['valor_en_bitcoins_de_la_empresa'];?> >      
                     <select name="id_gremio" hidden>
                                 <option value=<?=$tupla_empresa['id_gremio'];?> > <?=$tupla_empresa['id_gremio'];?></option>
                                 <option value="Ninguno" >Ninguno</option>
@@ -123,6 +123,7 @@
                 }
             }
             ?>
+            
 
         </tbody>
     </table>
@@ -170,17 +171,17 @@
      
     <div class="form-group">
         <label for="">NIT</label>
-        <input type="text" class="form-control" readonly name="NIT" value=<?=$_GET['NIT']?>>
+        <input type="number" class="form-control" required readonly name="NIT" value=<?=$_GET['NIT']?>>
     </div>
     
     <div class="form-group">
         <label for="">Nombre de la empresa</label>
-        <input type="text" class="form-control" name="nombre" value=<?=$_GET['nombre']?>>
+        <input type="text" class="form-control" required name="nombre" value=<?=$_GET['nombre']?>>
     </div>            
 
     <div class="form-group">
         <label for="">Valor en bitcoins</label>
-        <input type="text" class="form-control" name="valo_bit" value=<?=$_GET['valo_bit']?>>
+        <input type="number" class="form-control" required name="valo_bit" value=<?=$_GET['valo_bit']?>>
     </div>
      <!-- Código para el gremio asociado  -->
  
@@ -232,18 +233,18 @@
     
     <div class="form-group">
         <label for="">NIT</label>
-        <input type="text" class="form-control" name="nit" id="nit" >
+        <input type="number" class="form-control" required name="nit" id="nit" >
     </div>
     
     
     <div class="form-group">
     <label for="">Nombre de la empresa</label>
-    <input type="text" class="form-control" name="nombre_emp" id="nombre_emp" >
+    <input type="text" class="form-control" required name="nombre_emp" id="nombre_emp" >
             </div>
 
     <div class="form-group">
     <label for="">Valor en bitcoins</label>
-    <input type="text" class="form-control" name="valo_bit" id="valo_bit" >
+    <input type="number" class="form-control" required name="valo_bit" id="valo_bit" >
     </div>
 
     <!-- Código para el gremio asociado  -->

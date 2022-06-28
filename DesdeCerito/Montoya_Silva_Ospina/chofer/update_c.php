@@ -1,3 +1,18 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--CDN de boostraps: Libreria de estilos SCSS y CSS para darle unas buena apariencia a la aplicacion
+    para mas informacion buscar documentacion de boostraps en: https://getbootstrap.com/docs/4.3/getting-started/introduction/ -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>COOSUR</title>
+</head>
+<body>
+
 <?php
  
 
@@ -56,40 +71,52 @@ WHERE numero_identificacion='$_POST[n_id]'
 ";
 
 
-echo '<br>TODO BONIT q3';
+
 if($_POST['empre_r'] == ""){
     $query3 = "UPDATE chofer SET id_empresa_rival = NULL WHERE numero_identificacion='$_POST[n_id]'"; 
 }else{
     $query3 = "UPDATE chofer SET id_empresa_rival ='$_POST[empre_r]' WHERE numero_identificacion='$_POST[n_id]'"; 
 }
-echo '<br>TODO BONIT q4';
+
 if($_POST['gre_aso'] == ""){
     $query4 = "UPDATE chofer SET id_gremio = NULL WHERE numero_identificacion='$_POST[n_id]'"; 
 }else{
     $query4 = "UPDATE chofer SET id_gremio ='$_POST[gre_aso]' WHERE numero_identificacion='$_POST[n_id]'"; 
 }
-echo '<br>TODO BONITo FIN<br>';
+
     
 // $sql = "UPDATE document SET date_session = '".(($mod_date_session)?$mod_date_session:NULL)."' WHERE id = $id";
 
-$result = mysqli_query($conn, $query) or die(mysqli_error($conn));
-echo '<br>TODO BONITo Result <br>';
+$result = mysqli_query($conn, $query);
 
 
-$result3 = mysqli_query($conn, $query3) or die(mysqli_error($conn));
 
-$result4 = mysqli_query($conn, $query4) or die(mysqli_error($conn));
+$result3 = mysqli_query($conn, $query3) ;
+
+$result4 = mysqli_query($conn, $query4) ;
  
 if($result){
     header ("Location: chofer.php");
     
      
- }else{
-     echo "Ha ocurrido un error al Eliminar  la persona";
- }
- 
-mysqli_close($conn);
+}else{
 
-
-
-?>
+    ?>
+    
+    <div class="alert alert-danger" role="alert">
+      Ha ocurrido un error al actualizar al chofer
+      <?php
+        echo mysqli_error($conn);
+      ?>
+      <a href="../chofer/chofer.php"><button type="button" class="btn btn-success">Regresar</button></a>
+    </div>
+    
+    <?php
+    }
+    
+    
+    
+    mysqli_close($conn);
+    ?>
+    </body>
+</html>

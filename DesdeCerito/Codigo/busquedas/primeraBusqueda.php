@@ -126,10 +126,16 @@ mysqli_close($conn);
 
 <!-- Busquedas -->
 <div class="container">   
+    <p><h4> Nota: El resultado de las consultas - busquedas se muestran al final de esta página
+        (hacer scroll)
+        </h4></p>
         <div class="card-deck mt-3">
             <div class="card text-center border-info">
                 <div class="card-body">
                     <center><h3>Primera busqueda</h3></center>
+                    <p>Dos fechas f1 y f2 (cada fecha con día, mes y año), f2 ≥ f1 y un número entero n,
+                    n ≥ 0. Se debe mostrar el nombre del gremio y el teléfono del gremio de todos los gremios que tiene asociados exactamente n choferes nacidos en dicho rango de fechas [f1, f2].
+                    </p>
                     <form action="primeraBusqueda.php" method="POST">
                         <div class="form-group">
                             <label for="">Número de choferes a consultar</label>
@@ -146,7 +152,7 @@ mysqli_close($conn);
                         </div>
 
                         <div class="form-group">
-                            <input type="submit" value="Guardar">
+                            <input type="submit" class="btn btn-primary" value="Buscar">
                         </div>
                     </form>
                 </div>
@@ -155,6 +161,9 @@ mysqli_close($conn);
             <div class="card text-center border-info">
                 <div class="card-body">
                     <center><h3>Segunda busqueda</h3></center>
+                    <p>Dos números enteros n1 y n2, n1 ≥ 0, n2 > n1. Se debe mostrar el nit y el
+                    nombre de todas las empresas rivales que tienen asociados entre n1 y n2 choferes (intervalo cerrado [n1, n2]).
+                    </p>
                     <form action="segundaBusqueda.php" method="POST">
                         <div class="form-group">
                             <label for="">Número mínimo de choferes</label>
@@ -165,7 +174,7 @@ mysqli_close($conn);
                             <input type="number" class="form-control" name="NMaC">
                         </div>
                         <div class="form-group">
-                            <input type="submit" value="Guardar">
+                            <input type="submit" class="btn btn-primary" value="Buscar">
                         </div>
                     </form>
                 </div>
@@ -178,17 +187,28 @@ mysqli_close($conn);
                 <table class="table border-rounded">
                 <tr>
                     <td>
-                        <center>
+                        <p>Sea sumavalor la suma de los salarios de todos los choferes asociados a una empresa.</p>
+                        <p>El primer botón debe mostrar el NIT y el nombre de la empresa de cada una de las empresas que cumple todas las siguientes condiciones: <br>
+                        -	El gremio asociado (a la empresa) es no NULO <br>
+                        -	Tiene sumavalor >1000, <br>
+                        -	Está constituido por al menos 3 choferes<br>
+                        -	El gremio que lo tiene conformado no está constituido por ningún chofer.
+                    </p>
+                    <center>
                             <form action="busquedas.php" method="GET">
                                 <input type="text" hidden name="a" value="1">
-                                <button class="btn btn-light" title="editar" type="submit">Primera consulta</button>
+                                <button class="btn btn-primary" title="editar" type="submit">Primera consulta</button>
                             </form>
                     </td>
                     <td>
+                        <p>El segundo botón debe mostrar el número de identificación y el salario de cada uno de los choferes que cumple todas las siguientes condiciones:</p> <br>
+                        -	Tiene un salario mayor que el teléfono del gremio con la que este asociado<br>
+                        -	Además la empresa con el que está asociado, también está asociada con el gremio aL que esta asociado el chofer.<br>
+                        </p>
                         <center>
                             <form action="busquedas.php"  method="GET">
                             <input type="text" hidden name="a" value="2">
-                                <button class="btn btn-light" title="editar" type="submit">Segunda consulta</button>
+                                <button class="btn btn-primary" title="editar" type="submit">Segunda consulta</button>
                             </form>
                     </td>
                 </tr>

@@ -41,7 +41,10 @@
 
 <br>
 <!-- Busquedas -->
-    <div class="container">   
+    <div class="container">  
+    <p><h4> Nota: El resultado de las consultas - busquedas se muestran al final de esta página
+    (hacer scroll)
+    </h4></p>
         <div class="card-deck mt-3">
             <div class="card text-center border-info">
                 <div class="card-body">
@@ -65,7 +68,7 @@
                         </div>
 
                         <div class="form-group">
-                            <input type="submit" value="Guardar">
+                            <input type="submit" class="btn btn-primary" value="Buscar">
                         </div>
                     </form>
                 </div>
@@ -88,7 +91,7 @@
                             <input type="number" class="form-control" name="NMaC">
                         </div>
                         <div class="form-group">
-                            <input type="submit" value="Guardar">
+                            <input type="submit" class="btn btn-primary" value="Buscar">
                         </div>
                     </form>
                 </div>
@@ -103,8 +106,7 @@
                 <tr>
                     <td>
                         <p>Sea sumavalor la suma de los salarios de todos los choferes asociados a una empresa.</p>
-                        <p>El primer botón debe mostrar el NIT y el nombre de la empresa de cada una de las empresas que cumple todas las siguientes condiciones: <br>
-                    -	El gremio asociado (a la empresa) es no NULO <br>
+                        <p>El primer botón debe mostrar el NIT y el nombre de la empresa de cada una de las empresas que cumple todas las siguientes condiciones: El gremio asociado (a la empresa) es no NULO 
                     -	Tiene sumavalor >1000, <br>
                     -	Está constituido por al menos 3 choferes<br>
                     -	El gremio que lo tiene conformado no está constituido por ningún chofer.
